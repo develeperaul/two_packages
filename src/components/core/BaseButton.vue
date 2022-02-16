@@ -1,8 +1,19 @@
 <template>
   <button
     :type="type"
+    :class="`btn__${color} btn__round_${round}  color-${textcolor}`"
+    class="tw-w-full tw-flex tw-items-center tw-justify-center"
+    v-if="hasSlot('text')"
+  >
+    <span>
+      <slot name="text"> </slot>
+    </span>
+  </button>
+  <button
+    v-else
+    :type="type"
     :class="`btn btn__${color} btn__round_${round}  color-${textcolor}`"
-    class="tw-flex tw-items-center"
+    class="tw-flex tw-items-center tw-justify-center"
   >
     <span v-if="hasSlot('default')" class="btn__text" :class="`py-${py}`">
       <slot> </slot>
@@ -49,7 +60,7 @@ export default {
   width: 100%;
   border: none;
   padding-left: 10px;
-  font-size: 12px;
+
   height: 48px;
   &__text,
   &__spinner {
@@ -83,8 +94,8 @@ export default {
     background-color: $positive;
   }
   &__white {
-    background-color: #ffffff;
-    color: $secondary;
+    background-color: transparent;
+    color: $primary;
   }
 }
 

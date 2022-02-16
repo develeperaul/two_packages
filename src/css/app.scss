@@ -1,2 +1,30 @@
 // app global css in SCSS form
 @import "~normalize.css";
+
+.p-content {
+  padding-right: $pr;
+  padding-left: $pl;
+}
+.pt {
+  padding-top: $pt;
+}
+
+.circle,
+.circle__active {
+  display: block;
+
+  border-radius: 50px;
+  width: 6px;
+  height: 6px;
+}
+.circle {
+  background-color: $secondary;
+  &__active {
+    background-color: $primary;
+  }
+}
+//обновление квазаровских стилей
+.q-carousel__slide,
+.q-carousel .q-carousel--padding {
+  padding: 0;
+}

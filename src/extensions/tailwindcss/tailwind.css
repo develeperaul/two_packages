@@ -4,13 +4,26 @@
 
 @tailwind base;
 
-
 @tailwind components;
-
 
 @tailwind utilities;
 
+@layer base {
+  /* @font-face {
+    font-family: Arial, sans-serif;
+  } */
 
+  body {
+    font-family: Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
 
-
-
+  button {
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 12px;
+  }
+}
