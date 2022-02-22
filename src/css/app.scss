@@ -1,12 +1,60 @@
 // app global css in SCSS form
 @import "~normalize.css";
+// @import "~reset.css";
+@import "reset-css";
 
+body {
+  font-family: Arial, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+}
+
+button {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+p {
+  font-size: 12px;
+}
+
+h2 {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+a {
+  font-size: 12px;
+  line-height: 18px;
+  text-decoration: none;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 11px;
+  padding-top: 11px;
+  box-shadow: 0 0px 8px rgba(0, 0, 0, 0.16);
+}
+
+.nav-menu {
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
 .p-content {
   padding-right: $pr;
   padding-left: $pl;
 }
 .pt {
   padding-top: $pt;
+}
+
+.pb {
+  padding-bottom: $pb;
 }
 
 .circle,
@@ -22,6 +70,10 @@
   &__active {
     background-color: $primary;
   }
+}
+
+.reg__logo {
+  margin-bottom: 88px;
 }
 //обновление квазаровских стилей
 .q-carousel__slide,

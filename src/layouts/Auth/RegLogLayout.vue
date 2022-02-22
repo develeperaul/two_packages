@@ -1,105 +1,76 @@
 <template>
-  <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
-
-    <!-- (Optional) The Header -->
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="toggleLeftDrawer"
-        />
-
-        <q-toolbar-title>
-          Header
-        </q-toolbar-title>
-      </q-toolbar>
-
-      <q-tabs>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
+  <q-layout view="hHh Lpr fFf" class="tw-flex tw-flex-col tw-justify-between">
+    <q-header class="tw-flex tw-items-center p-content pt pb header__register">
+      <q-icon
+        name="arrow_back"
+        size="16pt"
+        color="white"
+        @click="goToPage"
+        class="tw-mr-6"
+      ></q-icon>
+      <h2 class="tw-text-white">{{ currentRoute }}</h2>
     </q-header>
-
-    <!-- (Optional) The Footer -->
-    <q-footer>
-      <q-tabs switch-indicator>
-        <q-route-tab
-          icon="map"
-          to="/your/route"
-          replace
-          label="One Tab"
-        />
-        <q-route-tab
-          icon="assignment"
-          to="/some/other/route"
-          replace
-          label="Other Tab"
-        />
-      </q-tabs>
-
-      <q-toolbar>
-        <q-btn
-          flat
-          round
-          dense
-          icon="menu"
-          @click="toggleLeftDrawer"
-        />
-        <q-toolbar-title>
-          Footer
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-footer>
-
-    <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
-    <q-drawer
-      v-model="leftDrawerOpen"
-      side="left"
-      bordered
-      class="bg-grey-2"
-    >
-      <!-- QScrollArea is optional -->
-      <q-scroll-area class="fit q-pa-sm">
-        <!-- Content here -->
-      </q-scroll-area>
-    </q-drawer>
-
     <q-page-container>
-      <!-- This is where pages get injected -->
-      <router-view />
+      <router-view
+        class="p-content"
+        :style="
+          $route.name !== 'agreement_sender' ? { 'padding-top': '32px' } : ''
+        "
+      />
     </q-page-container>
-
   </q-layout>
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed, onMounted } from "vue";
+import { useRoute, useRouter } from "vue-router";
+const headerText = {
+  agreement_sender: {
+    title: "Пользовательское соглашение",
+    from: { name: "auth" },
+  },
+  reg_courier: {
+    title: "Регистрация курьера",
+    from: { name: "auth" },
+  },
+  reg_sender: {
+    title: "Регистрация",
+    from: { name: "agreement_sender" },
+  },
+  confirmation: {
+    title: "Регистрация",
+    from: { name: "reg_sender" },
+  },
+  login: {
+    title: "Вход",
+    from: { name: "auth" },
+  },
+};
 
 export default {
   // name: 'LayoutName',
 
-  setup () {
-    const leftDrawerOpen = ref(false)
-
+  setup() {
+    const $route = useRoute();
+    const $router = useRouter();
+    const leftDrawerOpen = ref(false);
+    const currentRoute = computed(() => headerText[$route.name].title);
+    const goToPage = () => {
+      $router.push(headerText[$route.name].from);
+    };
     return {
+      currentRoute,
+      goToPage,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-}
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+};
 </script>
+<style lang="scss">
+.header__register {
+  background-color: $primary;
+}
+</style>

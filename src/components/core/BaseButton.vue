@@ -89,11 +89,16 @@ export default {
     color: #393939;
     background-color: $secondary;
   }
+  &__secondary_primary {
+    color: $primary;
+    background-color: $secondary;
+  }
   &__positive {
     color: #ffffff;
     background-color: $positive;
   }
   &__white {
+    border: none;
     background-color: transparent;
     color: $primary;
   }
@@ -101,8 +106,8 @@ export default {
 
 .py {
   &-lg {
-    padding-top: 13px;
-    padding-bottom: 16px;
+    // padding-top: 15px;
+    // padding-bottom: 16px;
   }
   &-md {
     padding: 5px;

@@ -44,6 +44,22 @@ export default route(function (/* { store, ssrContext } */) {
         next({ name: "auth" });
       }
     }
+    // if (to.matched.some((r) => r.meta.role)) {
+    //   let regexp = new RegExp(`${to.meta.role}`, "i");
+    //   let roleStorage = localStorage.getItem("role");
+
+    //   if (
+    //     regexp.test(to.path) &&
+    //     to.meta.role !== roleStorage &&
+    //     roleStorage !== null
+    //   ) {
+    //     next({ name: roleStorage });
+    //   }
+    //   if (roleStorage == null) {
+    //     next({ name: "auth" });
+    //   }
+
+    // }
     next();
   });
 

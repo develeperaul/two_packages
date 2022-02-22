@@ -2,7 +2,7 @@
  * This is the CSS base class used to generate Tailwind CSS Code
  */
 
-@tailwind base;
+/* @tailwind base; */
 
 @tailwind components;
 
@@ -12,18 +12,4 @@
   /* @font-face {
     font-family: Arial, sans-serif;
   } */
-
-  body {
-    font-family: Arial, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-  }
-
-  button {
-    font-size: 12px;
-    text-transform: uppercase;
-  }
-  p {
-    font-size: 12px;
-  }
 }
